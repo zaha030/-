@@ -7,12 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class EndingWork extends JFrame{
+	String[] strength = {"低" ,"中" ,"高"};
 	private Container cp;
 	private JLabel lab = new JLabel("長度:");
 	private JLabel lab1 = new JLabel("強度:");
 	private JLabel lab2 = new JLabel("組數:");
 	private JLabel lab3 = new JLabel("身分證:");
 	private JLabel lab4 = new JLabel("生日:");
+	private JLabel lab5 = new JLabel("(註:生日格式YYYYMMDD)");
 	private JButton btn = new JButton("執行");
 	private JButton btn1 = new JButton("儲存");
 	private JButton btn2 = new JButton("結束");
@@ -22,7 +24,7 @@ public class EndingWork extends JFrame{
 	private JTextField tf3 = new JTextField();
 	private JTextArea ta = new JTextArea();
 	private JTextArea ta1 = new JTextArea();
-	private JComboBox cb = new JComboBox();
+	private JComboBox cb = new JComboBox(strength);
 	
 	public EndingWork() {
 		initComp();
@@ -45,6 +47,8 @@ public class EndingWork extends JFrame{
 		this.add(lab3);
 		lab4.setBounds(20, 180, 50, 30);
 		this.add(lab4);
+		lab5.setBounds(100, 220, 150, 30);
+		this.add(lab5);
 		tf.setBounds(100, 25, 150, 20);
 		this.add(tf);
 		cb.setBounds(100, 65, 150, 20);
@@ -78,7 +82,22 @@ public class EndingWork extends JFrame{
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.exit(0);
+				String s1 = (String) cb.getSelectedItem();
+				int i1 = Integer.parseInt(tf.getText());
+				int i2 = Integer.parseInt(tf1.getText());
+				String s2 = tf2.getText();
+				String s3 = tf3.getText();
+				switch(s1){
+				case "低":
+					
+					break;
+				case "中":
+					
+					break;
+				case "高":
+					
+					break;
+				}
 			}
 			
 		});
@@ -86,7 +105,7 @@ public class EndingWork extends JFrame{
 		btn1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.exit(0);
+				
 			}
 			
 		});
