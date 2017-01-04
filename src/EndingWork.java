@@ -165,16 +165,10 @@ public class EndingWork extends JFrame{
 					fo.write(data);
 					fo.close();
 				} catch (IOException ioe) {
-					
 				}	
 			}
-			
 		});
-		
-		
 	}
-	
-	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
