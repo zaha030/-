@@ -27,6 +27,8 @@ public class EndingWork extends JFrame{
 	private JComboBox cb = new JComboBox(strength);
 	private JScrollPane jsp=new JScrollPane(ta);
 	private JScrollPane jsp1=new JScrollPane(ta1);
+	private Dialog dlg;
+	private FileDialog fDialog;
 	
 	public EndingWork() {
 		initComp();
@@ -72,7 +74,9 @@ public class EndingWork extends JFrame{
 		ta.setBackground(Color.CYAN);
 		jsp1.setBounds(300, 180, 280, 150);
 		this.add(jsp1);
-		ta1.setBackground(Color.gray);
+		ta1.setBackground(Color.LIGHT_GRAY);
+		dlg = new Dialog(this);
+		fDialog = new FileDialog(this);
 		btn2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -153,7 +157,16 @@ public class EndingWork extends JFrame{
 		btn1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+				fDialog.setVisible(true);
+				String fileName = fDialog.getDirectory() + fDialog.getFile();
+				try {
+					FileOutputStream fo = new FileOutputStream(fileName);
+					byte data[] = ta1.getText().getBytes();
+					fo.write(data);
+					fo.close();
+				} catch (IOException ioe) {
+					
+				}	
 			}
 			
 		});
