@@ -25,6 +25,8 @@ public class EndingWork extends JFrame{
 	private JTextArea ta = new JTextArea();
 	private JTextArea ta1 = new JTextArea();
 	private JComboBox cb = new JComboBox(strength);
+	private JScrollPane jsp=new JScrollPane(ta);
+	private JScrollPane jsp1=new JScrollPane(ta1);
 	
 	public EndingWork() {
 		initComp();
@@ -65,11 +67,11 @@ public class EndingWork extends JFrame{
 		this.add(btn1);
 		btn2.setBounds(180, 300, 75, 20);
 		this.add(btn2);
-		ta.setBounds(300, 20, 280, 150);
-		this.add(ta);
-		ta.setBackground(Color.gray);
-		ta1.setBounds(300, 180, 280, 150);
-		this.add(ta1);
+		jsp.setBounds(300, 20, 280, 150);
+		this.add(jsp);
+		ta.setBackground(Color.CYAN);
+		jsp1.setBounds(300, 180, 280, 150);
+		this.add(jsp1);
 		ta1.setBackground(Color.gray);
 		btn2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
@@ -82,24 +84,70 @@ public class EndingWork extends JFrame{
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				String s1 = (String) cb.getSelectedItem();
-				int i1 = Integer.parseInt(tf.getText());
-				int i2 = Integer.parseInt(tf1.getText());
-				String s2 = tf2.getText();
-				String s3 = tf3.getText();
+				ta.setText("");
+				String s1 = (String) cb.getSelectedItem();//強度
+				int i1 = Integer.parseInt(tf.getText());//長度
+				int i2 = Integer.parseInt(tf1.getText());//組數
+				String s2 = tf2.getText();//身分證
+				String s3 = tf3.getText();//生日
+				int num=0;
+				String s4 = "";//顯示密碼
+				String s5 = "";//暫存密碼
 				switch(s1){
 				case "低":
-					
+					for(int j =0;j<i2;j++){
+						if(j>0){
+							s4+="\n";
+							s5="";
+						}
+						while(s5.length()<i1){
+							num = (int) (( Math.random()*(10) ) + 48);
+							s5+=(char)num;
+						}
+						s4+=s5;
+					}
 					break;
 				case "中":
-					
+					for(int j =0;j<i2;j++){
+						if(j>0){
+							s4+="\n";
+							s5="";
+						}
+						while(s5.length()<i1){
+							num = (int) (( Math.random()*(75) ) + 48);
+							  if (num > 57 && num < 97){
+								  continue;
+							  } else if (num == 79 || num == 73){
+								  continue;//排除I跟O
+							  }
+							s5+=(char)num;
+						}
+						s4+=s5;
+					}
 					break;
 				case "高":
-					
+					for(int j =0;j<i2;j++){
+						if(j>0){
+							s4+="\n";
+							s5="";
+						}
+						while(s5.length()<i1){
+							num = (int) (( Math.random()*(75) ) + 48);
+							  if (num > 57 && num < 65){
+								  continue;
+							  }else if (num > 90 && num < 97){
+								  continue;
+							  }else if (num == 79 || num == 73){
+								  continue;//排除I跟O
+							  }
+							s5+=(char)num;
+						}
+						s4+=s5;
+					}
 					break;
 				}
+				ta.append(s4);
 			}
-			
 		});
 		
 		btn1.addActionListener(new ActionListener(){
